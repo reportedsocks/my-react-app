@@ -44,7 +44,6 @@ class App extends Component {
       font: "inherit",
       border: "1px solid blue",
       padding: "8px"
-      }
     };
 
     let persons =null;
