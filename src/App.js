@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import classes from './App.css';
 import Person from './Person/Person';
 
 class App extends Component {
@@ -19,7 +19,7 @@ class App extends Component {
 
   changedNameHandler = (event, id) =>{
     const personIndex = this.state.persons.findIndex(p =>{
-      return p.id ===id
+      return p.id === id
     });
 
     const person = {...this.state.persons[personIndex]};
@@ -38,13 +38,7 @@ class App extends Component {
 
   render() {
 
-    const style = {
-      backgroundColor: "green",
-      color: "white",
-      font: "inherit",
-      border: "1px solid blue",
-      padding: "8px"
-    };
+    let btnClass = '';
 
     let persons =null;
     if(this.state.showPersons){
@@ -61,23 +55,23 @@ class App extends Component {
         </div>
       );
 
-      style.backgroundColor = "red";
+      btnClass = classes.Red;
       
     }
 
-    const classes = [];
+    const classesAppended = [];
     if(this.state.persons.length <=2){
-      classes.push('red');
+      classesAppended.push(classes.red);
     }
     if(this.state.persons.length <=1){
-      classes.push('bold');
+      classesAppended.push(classes.bold);
     }
 
     return (
-      <div className="App">
+      <div className={classes.App}>
         <h1>Hello world!</h1>
-        <p className={classes.join(" ")}>I change my color and font weight depending on number of persons!</p>
-        <button style={style} onClick={this.togglePersonsHandler}>Toggle Persons</button>
+        <p className={classesAppended.join(" ")}>I change my color and font weight depending on number of persons!</p>
+        <button className={btnClass} onClick={this.togglePersonsHandler}>Toggle Persons</button>
         {persons}
       </div>
     );
